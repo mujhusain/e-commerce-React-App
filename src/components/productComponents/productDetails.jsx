@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { slectedProduct, removeOldProduct } from "../actions/productAction";
+import { Loader } from "./utility/loader";
 
 const ProductDetail = () => {
   const { productId } = useParams();
@@ -29,7 +30,7 @@ const ProductDetail = () => {
   return (
     <div className="ui grid container">
       {Object.keys(selectedProd).length == 0 ? (
-        <>Loading...</>
+        <Loader />
       ) : (
         <div className="ui placeholder segment">
           <div className="ui two column stackable center aligned grid">
@@ -39,7 +40,7 @@ const ProductDetail = () => {
                 <img className="ui fluid image" src={image} />
               </div>
               <div className="column rp">
-                <h1>{title}</h1>
+                <h1>{title}</h1> 
                 <h2>
                   <a className="ui teal tag label">${price}</a>
                 </h2>
